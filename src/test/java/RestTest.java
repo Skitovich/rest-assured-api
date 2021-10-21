@@ -1,12 +1,8 @@
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import pojos.CreateUserRequest;
+import pojos.UserRequest;
 import pojos.CreateUserResponse;
 import pojos.UserPojo;
-import steps.UsersSteps;
 import utils.RestWrapper;
 import utils.UserGenerator;
 
@@ -38,19 +34,18 @@ public class RestTest {
 
     @Test
     void getUsersEmailsWithPojo() {
-        assertThat(api.getUsers()).extracting(UserPojo::getEmail).contains("george.bluth@reqres.in");
+        assertThat(api.user.getUsers()).extracting(UserPojo::getEmail).contains("george.bluth@reqres.in");
     }
 
     @Test
     public void createUser() {
-        CreateUserRequest rq = UserGenerator.getSimpleUser();
-        CreateUserResponse rs = api.createUser(rq);
+        UserRequest rq = UserGenerator.getSimpleUser();
+        CreateUserResponse rs = api.user.createUser(rq);
 
         assertThat(rs)
                 .isNotNull()
                 .extracting(CreateUserResponse::getName)
                 .isEqualTo("simple");
-
     }
 }
 

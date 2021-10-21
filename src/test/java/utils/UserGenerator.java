@@ -1,11 +1,11 @@
 package utils;
 
-import pojos.CreateUserRequest;
+import pojos.UserRequest;
 
 public class UserGenerator {
 
-    public static CreateUserRequest getSimpleUser() {
-        return CreateUserRequest.builder()
+    public static UserRequest getSimpleUser() {
+        return UserRequest.builder()
                 .name("simple")
                 .job("automation")
                 .build();

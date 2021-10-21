@@ -17,6 +17,7 @@ public abstract class RestService {
         REQUEST_SPECIFICATION = new  RequestSpecBuilder()
                 .addCookies(cookies)
                 .setBaseUri(BASE_URL)
+                .setBasePath(getBasePath())
                 .setContentType(ContentType.JSON)
                 .build();
     }

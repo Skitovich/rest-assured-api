@@ -3,7 +3,7 @@ package steps;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import pojos.CreateUserRequest;
+import pojos.UserRequest;
 import pojos.CreateUserResponse;
 import pojos.UserPojo;
 
@@ -22,7 +22,7 @@ public class UsersSteps {
 
     private CreateUserResponse user;
 
-    public CreateUserResponse createUser(CreateUserRequest rq) {
+    public CreateUserResponse createUser(UserRequest rq) {
         user = given().spec(REQUEST_SPECIFICATION).body(rq).post().as(CreateUserResponse.class);
         return user;
     }
